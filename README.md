@@ -33,8 +33,8 @@ The default configurations are as below and defined in config/api.php.
 
 return [
     'Facebook' => [
-        'AppId' => '1336289226489835',
-        'AppSecret' => 'b2c01b4544a3e388ce84c41456dccaf3',
+        'AppId' => '1336289226489834',
+        'AppSecret' => 'b2c01b4544a3e388ce84c41456dccaf4',
         'DefaultGraphVersion' => 'v2.2',
     ],
 ];
