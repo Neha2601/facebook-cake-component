@@ -43,6 +43,11 @@ return [
 ```php
 Configure::load('global', 'default');
 ```
+You also need to have in your composer.json to use this class.
+	"require": {
+		"facebook/graph-sdk": "^5.6"
+ },
+
 In your  controller,load facebook component  into your overridden initialize method like this.
 ```php
    public function initialize()
