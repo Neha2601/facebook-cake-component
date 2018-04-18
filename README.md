@@ -9,7 +9,7 @@ This plugin provides basic support for use FACEBOOK API services in your CakePHP
 This plugin has the following requirements:
 
 * CakePHP 3.0.0 or greater.
-* Facebook PHP_SDK 5.
+* PHP 5.4.16 or greater.
 
 
 ## Installation
