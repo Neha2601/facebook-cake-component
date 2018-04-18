@@ -6,5 +6,7 @@
             "email": "nehal.dobariya@multidots.com"
         }
     ],
-    "require": {}
+    "require": {
+    "facebook/graph-sdk": "^5.*",
+    }
 }
