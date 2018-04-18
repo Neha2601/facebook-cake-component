@@ -3,9 +3,7 @@
 [![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
 [![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
-
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+This plugin provides basic support for use FACEBOOK API services in your CakePHP 3 application. 
 
 ## Requirements
 This plugin has the following requirements:
@@ -21,24 +19,72 @@ The recommended way to install composer packages is:
 ```
 composer require facebook/graph-sdk
 ```
-After installation, [Load the plugin](http://book.cakephp.org/3.0/en/plugins.html#loading-a-plugin)
-```php
-Configure::load('app_global', 'default');
-```
-
-## Update
-
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
 
 ## Configuration
 
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
+To use a Facebook config file, you should have a global.php file in your config folder.
+The default configurations are as below and defined in config/api.php.
+```php
+<?php
 
-## Layout
+return [
+    'Facebook' => [
+        'AppId' => '1336289226489835',
+        'AppSecret' => 'b2c01b4544a3e388ce84c41456dccaf3',
+        'DefaultGraphVersion' => 'v2.2',
+    ],
+];
+```
+  and load below  file in your bootstrap.php.
+```php
+Configure::load('global', 'default');
+```
+In your  controller,load facebook component  into your overridden initialize method like this.
+```php
+   public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Facebook');
+    }
+```
+## Usage
+@link https://developers.facebook.com/docs/php/howto/example_facebook_login.
+You just need to load facebook component in controller. For example,
+```php
+namespace App\Controller;
 
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+use Facebook\Facebook;
+
+/**
+ * Facebook login.
+ */
+class SocialDetailsController extends ApiController
+{
+
+    /**
+     * Facebook login.
+     */
+    public function login()
+    {
+        $permissions = ['email']; // Optional permissions
+        $callbackUrl = 'http://' . $_SERVER['SERVER_NAME'] . 'facebook-callback'; // Redirect URL
+        $loginUrl = $this->Facebook->facebookLogin($permissions, $callbackUrl);
+        $this->set('loginUrl', $loginUrl);
+    }
+    
+     /**
+     * facebook callback method.
+     */
+    public function facebookCallback()
+    {
+        $this->autoRender = false;
+        $facebook = $this->Facebook->getAccessToken();
+        return true; //Return in your page
+    }
+}
+```
+You can define your logic in your action function as per your need. For above example, You can redirect them to a your page.
+
+The URL for above example will be `http://yourdomain.com/SocialDetails/login`. You can customize it by setting the routes in `APP/config/routes.php`.
+
+Simple :)
