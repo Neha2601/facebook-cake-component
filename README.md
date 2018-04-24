@@ -21,7 +21,11 @@ composer require neha2601/facebook-cake-component:"^0.0.1"
 ```
 After installation, [Load the plugin](http://book.cakephp.org/3.0/en/plugins.html#loading-a-plugin)
 ```php
-Plugin::load('FacebookApi', ['bootstrap' => true]);
+Plugin::load('FacebookApi');
+```
+Or, you can load the plugin using the shell command
+```sh
+$ bin/cake plugin load FacebookApi
 ```
 
 ## Configuration
@@ -49,13 +53,11 @@ You also need to have in your composer.json to use this class.
         "facebook/graph-sdk": "^5.6"
     }
 ```
-In your  controller,load facebook component  into your overridden initialize method like this.
+To use this, simply load the FacebookApi component from this plugin into your AppController or UsersController.
+
 ```php
-   public function initialize()
-    {
-        parent::initialize();
-        $this->loadComponent('Facebook');
-    }
+$this->loadComponent('RememberMe.RememberMe');
+```
 ```
 ## Usage
 @link https://developers.facebook.com/docs/php/howto/example_facebook_login.
