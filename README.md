@@ -56,7 +56,7 @@ You also need to have in your composer.json to use this class.
 To use this, simply load the FacebookApi component from this plugin into your AppController or UsersController.
 
 ```php
-$this->loadComponent('RememberMe.RememberMe');
+$this->loadComponent('FacebookApi.Facebook');
 ```
 ## Usage
 @link https://developers.facebook.com/docs/php/howto/example_facebook_login.
