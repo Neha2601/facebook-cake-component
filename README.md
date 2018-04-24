@@ -58,7 +58,6 @@ To use this, simply load the FacebookApi component from this plugin into your Ap
 ```php
 $this->loadComponent('RememberMe.RememberMe');
 ```
-```
 ## Usage
 @link https://developers.facebook.com/docs/php/howto/example_facebook_login.
 You just need to load facebook component in controller. For example,
