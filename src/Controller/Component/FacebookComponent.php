@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Component;
+namespace FacebookApi\Controller\Component;
 
 use Cake\Core\Configure;
 use Cake\Controller\Component;
